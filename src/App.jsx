@@ -17,6 +17,10 @@ export default function App() {
             )
     }
 
+    function rollDice() {
+        setDice(generateAllNewDice())
+    }
+
     function hold(id) {
         console.log(id)
     }
@@ -35,6 +39,10 @@ export default function App() {
             <div className="dice-container">
                 {newDice}
             </div>
+                <div>
+                <button className="roll-dice" onClick={rollDice}>Roll</button>
+                </div>
+
         </main>
     )
 }
