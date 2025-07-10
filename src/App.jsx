@@ -18,11 +18,23 @@ export default function App() {
     }
 
     function rollDice() {
-        setDice(generateAllNewDice())
+        setDice(prevDice => prevDice.map(prevDiceObj => 
+            prevDiceObj.isHold == false ? {
+                ...prevDiceObj,
+                value: Math.ceil(Math.random() * 6)
+            } : prevDiceObj
+        ))
     }
 
     function hold(id) {
-        console.log(id)
+        setDice(prevDice => prevDice.map(prevDiceObj => 
+            prevDiceObj.id == id ? 
+            {
+                ...prevDiceObj,
+                isHold: !prevDiceObj.isHold
+            } : prevDiceObj
+        ))
+        console.log(dice)
     }
 
     const newDice = dice.map(diceObj => 
